@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Top người đẹp gái nhất thế giới 2025</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #0b0c2a, #001a33); /* nền đen -> xanh đêm */
+  margin: 0;
+  padding: 0;
+  color: #fff; /* chữ trắng nổi bật trên nền tối */
+  overflow-x: hidden;
+  position: relative;
+}
+header {
+  text-align: center;
+  padding: 50px 20px;
+  animation: fadeIn 1s ease forwards;
+}
+header h1 {
+  font-size: 2.8em;
+  margin-bottom: 20px;
+}
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px 50px;
+  position: relative;
+}
+.top {
+  background: rgba(255, 255, 255, 0.05); /* trong suốt mờ */
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px 0;
+  box-shadow: 0 5px 15px rgba(255,255,255,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.top:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px rgba(255,255,255,0.2);
+}
+button {
+  background: #1e90ff; /* xanh sáng */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+  margin-right: 10px;
+}
+button:hover {
+  background: #00bfff;
+  transform: scale(1.05);
+}
+.fb-link {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 15px 30px;
+  background: #1877f2;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+.fb-link:hover {
+  background: #145dbf;
+  transform: scale(1.05);
+}
+.star {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  box-shadow: 0 0 15px #ffffff, 0 0 30px #aaddff; /* glow kiểu sao */
+}
+.vote-section {
+  text-align: center;
+  margin-top: 40px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<header>
+<h1>Top người đẹp gái nhất thế giới năm 2025</h1>
+<p>Danh sách top 3 người đẹp gái nhất thế giới năm 2025 do chúng tôi tổng hợp.</p>
+</header>
+<main>
+<div class="top" id="top1">
+<h2>Top 1: Ngọc Hân</h2>
+</div>
+<div class="top" id="top2">
+<h2>Top 2: Hoàng Thị Ngọc Hân</h2>
+</div>
+<div class="top" id="top3">
+<h2>Top 3: Han</h2>
+</div>
+<a href="https://www.facebook.com/NqocHan.947845" class="fb-link">Bấm vô đây để biết thêm thông tin về người đẹp gái nhất thế giới</a>
+
+<div class="vote-section">
+<h3>Chủ tịch doanh nhân thành đạt sẽ bấm like</h3>
+<button id="likeBtn">👍 Thấy hữu ích</button>
+<button id="dislikeBtn">👎 Không thích</button>
+<p id="voteCount">Có 0 người thấy web này hữu ích.</p>
+</div>
+
+<div class="star" id="cursor"></div>
+</main>
+<script>
+let count = 0;
+
+// Nút like
+document.getElementById('likeBtn').addEventListener('click', () => {
+  count++;
+  document.getElementById('voteCount').innerText = `Có ${count} người thấy web này hữu ích.`;
+});
+
+// Nút không thích
+document.getElementById('dislikeBtn').addEventListener('click', () => {
+  alert('Xàm nó cũng vừa phải thôi chứ');
+});
+
+// Hiệu ứng sao theo chuột
+document.addEventListener('mousemove', (e) => {
+  const star = document.createElement('div');
+  star.classList.add('star');
+  document.body.appendChild(star);
+  star.style.left = e.clientX + 'px';
+  star.style.top = e.clientY + 'px';
+  star.style.opacity = 1;
+
+  setTimeout(() => {
+    star.style.opacity = 0;
+    setTimeout(() => {
+      star.remove();
+    }, 300);
+  }, 300);
+});
+
+// Thêm hiệu ứng di chuột trên các thẻ top
+document.querySelectorAll('.top').forEach(top => {
+  top.addEventListener('mousemove', e => {
+    const rect = top.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    top.style.transform = `translate(${x*0.03}px, ${y*0.03}px)`;
+  });
+});
+</script>
+</body>
+</html>
